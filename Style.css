@@ -3,7 +3,7 @@ body{
     font-family: Arial, sans-serif;
 }
 .title1{
-    color: #000000;
+    color: #FFC107;
     display: flex;
     flex: 1;
     flex-direction:column; 
@@ -12,7 +12,8 @@ body{
     font-family: Arial, sans-serif;
 }
 .table{
-    color: azure;
+    background-color: #9D1F20;
+    color:  #000000;
     display: table;
     align-content: center;
     font-family: Arial, sans-serif;
@@ -21,9 +22,14 @@ body{
     margin: 0 auto;
     padding: 0 0 0 0;
 }
-.table th h1 {
-    font-weight: bold;
-    font-size: 1em;
-  text-align: center;
-  color: azure;
-}
+
+th, td {
+    border: 1px solid #ddd; 
+    padding: 12px;
+    text-align: left; 
+  }
+  
+  th {
+    border-color: #ddd; 
+    ;
+  }
