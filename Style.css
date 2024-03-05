@@ -1,0 +1,29 @@
+body{
+    background:rgb(164, 88, 88);
+    font-family: Arial, sans-serif;
+}
+.title1{
+    color: #000000;
+    display: flex;
+    flex: 1;
+    flex-direction:column; 
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+.table{
+    color: azure;
+    display: table;
+    align-content: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 0 0 0;
+}
+.table th h1 {
+    font-weight: bold;
+    font-size: 1em;
+  text-align: center;
+  color: azure;
+}

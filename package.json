@@ -1,0 +1,19 @@
+{
+  "name": "rwby_blog",
+  "version": "9.1.2",
+  "description": "Blog de peleas de rwby",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [
+    "Database"
+  ],
+  "author": "Abby Donis (22440)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3",
+    "mysql2": "^3.9.2"
+  },
+  "type": "module"
+}
