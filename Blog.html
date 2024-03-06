@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang = es>
+    <head>
+        <meta charset = "UFT-8">
+        <meta  name = "viewport" content = "width = device-width, initial/scale = 1.0">
+        <title>Peleas</title>  
+        <link rel="stylesheet" href="Style.css">
+        <script src="main.js"></script>
+        <form id="postForm" method="POST" action="/posts"></form>
+    </head>
+    <body>
+        <h1 class="title1">Peleas favoritas en series</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                  <th>Post</th>
+                  <th>Episodio</th>
+                  <th>Pelea</th>
+                  <th>Soundtrack</th>
+                  <th>Comentario</th>
+                  <th>Video</th>
+                </tr>
+              </thead>
+            <tbody>
+                {{#each posts}}
+            <tr>
+                <td>{{title}}</td>
+                <td>{{episode}}</td>
+                <td>{{nameFight}}</td>
+                <td>{{nameSoundtrack}}</td>
+                <td>{{content}}</td>
+                <td>
+                {{#if fightVideo}}
+                    <iframe width="320" height="240" src="https://www.youtube.com/embed/{{fightVideo.slice(-11)}}"></iframe>
+                {{else}}
+                    No video provided
+                {{/if}}
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        <form class="form" method="POST" action="/posts">
+            <label for="title">Titulo:</label>
+            <input type="text" id="title" name="title" required>
+          
+            <label for="content">Comentario:</label>
+            <textarea id="content" name="content" required></textarea>
+          
+            <label for="episode">Episodio:</label>
+            <input type="text" id="episode" name="episode" required>
+          
+            <label for="nameFight">Nombre pelea:</label>
+            <input type="text" id="nameFight" name="nameFight" required>
+          
+            <label for="nameSoundtrack">Soundtrack:</label>
+            <input type="text" id="nameSoundtrack" name="nameSoundtrack" required>
+          
+            <label for="fightVideo">Video:</label>
+            <input type="url" id="fightVideo" name="fightVideo">
+          
+            <button type="submit">Crear post</button>
+          </form>
+    </body>
+</html>
