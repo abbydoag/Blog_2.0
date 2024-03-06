@@ -42,5 +42,4 @@ export async function updatePostById(postId, upPost) {
     }
   
     return { ...upPost, id: postId };
-}
-  
+} 
