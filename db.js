@@ -12,7 +12,7 @@ export async function createPost(title, content, episode, nameFight, nameSoundtr
       'INSERT INTO blog_posts (title, content, episode, nameFight, nameSoundtrack, fightVideo) VALUES (?, ?, ?, ?, ?, ?)',
       [title, content, episode, nameFight, nameSoundtrack, fightVideo]
     );
-    return result;
+    return {message: "Post creado :)"};
 }
 
 //delete posts (id)
