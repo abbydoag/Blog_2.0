@@ -11,11 +11,11 @@ services:
   mysql:
     build: ./dockerfiles/mysql
     environment:
-      MYSQL_USER: blog-user
+      MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: RWBYblog
       MYSQL_DATABASE: blog
     ports:
-      - 3310:3310 
+      - 3310:3306 
     volumes:
       - mysql-data:/var/lib/mysql
 volumes:

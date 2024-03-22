@@ -21,6 +21,7 @@ app.get("/posts", async(req, res) =>{
 // POST /posts
 app.post("/posts", async(req,res) =>{
   const newPost = req.body;
+  console.log("Cuerpo de la solicitud:", newPost);
   const postMade = await createPost(
     newPost.title,
     newPost.content,
@@ -57,10 +58,10 @@ app.put("/posts/:postId", async(req, res) =>{
 //DELETE /posts/:postId
 app.delete("/posts/:postId", async (req, res)=>{
   const {postId} = req.params;
-  const[result] = await conn.query("DELETE FROM blog_posts WHERE id = ?", [postId]);
+  const result = await deletePost(postId);
 
   if (result.affectedRows === 0){
     return res.status(404).json({ message: "Error 404: Post no encontrado :("});
   }
-  res.json({message: "Post eliminado :)"})
+  res.status({message: "Post eliminado :)"})
 });

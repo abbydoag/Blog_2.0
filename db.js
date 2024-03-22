@@ -8,11 +8,11 @@ export async function getAllPosts() {
 
 //create posts
 export async function createPost(title, content, episode, nameFight, nameSoundtrack, fightVideo) {
-    const [result] = await conn.query(
-      'INSERT INTO blog_posts (title, content, episode, nameFight, nameSoundtrack, fightVideo) VALUES (?, ?, ?, ?, ?, ?)',
-      [title, content, episode, nameFight, nameSoundtrack, fightVideo]
-    );
-    return {message: "Post creado :)"};
+  const [result] = await conn.query(
+    'INSERT INTO blog_posts (title, content, episode, nameFight, nameSoundtrack, fightVideo) VALUES (?, ?, ?, ?, ?, ?)',
+    [title, content, episode, nameFight, nameSoundtrack, fightVideo]
+  );
+  return {message: "Post creado :)"};
 }
 
 //delete posts (id)
