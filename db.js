@@ -2,17 +2,24 @@ import conn from './conn.js'
 //ya exportadas 
 //get posts
 export async function getAllPosts() {
- const [rows] = await conn.query('SELECT * FROM blog_posts ORDER BY created_at DESC')
- return rows
+  const [rows] = await conn.query('SELECT title, content, episode, nameFight, nameSoundtrack, fightVideo FROM blog_posts')
+  return rows
 }
 
 //create posts
 export async function createPost(title, content, episode, nameFight, nameSoundtrack, fightVideo) {
+  console.log("Datos:", title, content, episode, nameFight, nameSoundtrack, fightVideo);
   const [result] = await conn.query(
     'INSERT INTO blog_posts (title, content, episode, nameFight, nameSoundtrack, fightVideo) VALUES (?, ?, ?, ?, ?, ?)',
     [title, content, episode, nameFight, nameSoundtrack, fightVideo]
   );
-  return {message: "Post creado :)"};
+  if (result.affectedRows === 1) {
+    console.log("Post creado");
+    return { message: "Post creado :)" };
+  } else {
+    console.error("Error al crear el post:", result);
+    throw new Error("Error :("); 
+  }
 }
 
 //delete posts (id)

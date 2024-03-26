@@ -3,6 +3,8 @@ import {createPost, getAllPosts} from "./db.js"
 const app = express()
 const port = 3000
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("Hola World!")
 })
@@ -10,18 +12,10 @@ app.listen(port, () => {
   console.log("Server listening at http://127.0.0.1:${port}")
 })
 
-
-app.use(express.json())
-// GET /posts
-app.get("/posts", async(req, res) =>{
-    const posts = await getAllPosts()
-    res.json(posts)
-})
-
 // POST /posts
 app.post("/posts", async(req,res) =>{
   const newPost = req.body;
-  console.log("Cuerpo de la solicitud:", newPost);
+  console.log("Contenido post:", newPost);
   const postMade = await createPost(
     newPost.title,
     newPost.content,
@@ -33,14 +27,13 @@ app.post("/posts", async(req,res) =>{
   res.status(201).json(postMade);
 });
 
-// GET /posts/:postId
-app.get("/posts/:postId", async(req, res) =>{
-  const {postId} = req.params;
-  const post = await getPostById(postId);
-  if (!post) {
-      return res.status(404).json({ message: "Error 404: Post no encontrado :("});
+// GET /posts/
+app.get("/all-posts", async(req, res) =>{
+  const posts = await getAllPosts();
+  if (posts.length===0) {
+      return res.status(404).json({ message: "Error 404: Posts no encontrados :("});
   }
-  res.json(post);
+  res.json(posts);
 });
 
 // PUT /posts/:postId
